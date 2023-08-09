@@ -1,0 +1,13 @@
+#!/bin/bash
+
+container_name_substr=$1
+shell_type=$2
+
+container_id=$(docker ps --format '{{.Names}}' | grep -i "$container_name_substr" | head -n1)
+
+if [ -z "$container_id" ]; then
+    echo "No container found matching '$container_name_substr'"
+    exit 1
+fi
+
+docker exec -it "$container_id" "$shell_type"
