@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$#" -ne 2 ]; then
+    echo "Usage: dx <container-name> <shell-type>"
+    exit 1
+fi
+
 container_name_substr=$1
 shell_type=$2
 
